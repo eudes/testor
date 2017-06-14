@@ -27,7 +27,8 @@ restService.post('/hook', function (req, res) {
 
                 if (requestBody.result.action) {
                     speech += 'action: ' + requestBody.result.action;
-                    speech += ' parameters: ' + requestBody.result.parameters;
+                    speech += ' parameters: ' + JSON.stringify(requestBody.result.parameters);
+                     
                 }
             }
         }

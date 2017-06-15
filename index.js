@@ -14,6 +14,7 @@ restService.post('/hook', function (req, res) {
 
     try {
         var speech = 'empty speech';
+        var result = 
 
         if (req.body) {
             var requestBody = req.body;
@@ -27,15 +28,8 @@ restService.post('/hook', function (req, res) {
                 }
 
                 if (requestBody.result.action) {
-                    speech += 'action: ' + requestBody.result.action;
-                    speech += ' parameters: ' + JSON.stringify(requestBody.result.parameters);
-
-                    var response = actions.routeRequest(requestBody.result.action, requestBody.result);
-
-                    if(response.speech){
-                        speech = response.speech;
-                    }
-                     
+                    speech += actions.routeRequest(requestBody.result.action, requestBody.result);
+             
                 }
             }
         }

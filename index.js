@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const actions = require('./actions.js');
 
 
 const restService = express();
@@ -28,6 +29,12 @@ restService.post('/hook', function (req, res) {
                 if (requestBody.result.action) {
                     speech += 'action: ' + requestBody.result.action;
                     speech += ' parameters: ' + JSON.stringify(requestBody.result.parameters);
+
+                    var response = actions.routeRequest(requestBody.result.action, requestBody.result);
+
+                    if(response.speech){
+                        speech = response.speech;
+                    }
                      
                 }
             }

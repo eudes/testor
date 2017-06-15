@@ -1,17 +1,11 @@
 const Actions = {
 
 	routeRequest: function speechRequest(actionName, data){
-		var response = {
-            speech: speech,
-            displayText: speech,
-            source: 'apiai-webhook-sample'
-        };
+		var response = null;
 		
 		if(actionName && (typeof this[actionName] == "function") && actionName != "routeRequest"){
 			//response = this[actionName].apply(Actions, data);
-			var result = this[actionName](data);
-
-			result
+			response = this[actionName](data);
 		} else {
 			throw "No action with name " + actionName;
 		}

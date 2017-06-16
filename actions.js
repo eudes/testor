@@ -18,9 +18,16 @@ const Actions = {
 
 		if(data && data.parameters && data.parameters.number &&
 			data.parameters.number.length > 0){
+
+			var sum = data.parameters.number.reduce((acc, val) => acc + val);
+			if(data.parameters.prev_number){
+				sum += data.parameters.prev_number.reduce((acc, val) => acc + val);
+			}
+
 			result += fulfillment.speech;
             result += ' ';
-			result += data.parameters.number.reduce((acc, val) => acc + val);
+			result += sum;
+
 		} else {
 			result = "Tú estás tonto o qué?"
 		}

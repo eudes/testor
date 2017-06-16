@@ -4,8 +4,10 @@
   "description": "Webhook sample",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test":  "mocha"
+    "start": "node app.js",
+    "test":  "mocha",
+    "local": "PORT=8098 node app.js",
+    "log_requests": "PORT=8098 LOG_REQUESTS=1 node app.js"
   },
   "author": "Danil Skachkov <danil.skachkov@speaktoit.com> (https://api.ai)",
   "license": "Apache 2.0",

@@ -1,15 +1,13 @@
 var assert = require('chai').assert;
+const fs = require('fs');
 
 const actions = require('../actions.js');
 
 
+
 describe('actions', function(){
 	describe('sum()', function(){
-		var tests = [
-			{args: [1, 1], expected: 2},
-			{args: [], expected: 0},
-			{args: [500, 10, 10, 10], expected: 530}
-		];
+		let tests = 
 
 		tests.forEach(function (test) {
 			it('correctly adds ' + test.args.length + ' args', function() {

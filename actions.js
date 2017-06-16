@@ -21,10 +21,11 @@ const Actions = {
 
 			var sum = data.parameters.number.reduce((acc, val) => acc + val);
 			if(data.parameters.prev_number){
+				console.log('prev_number', data.parameters.prev_number, JSON.stringify(data.parameters.prev_number));
 				sum += data.parameters.prev_number.reduce((acc, val) => acc + val);
 			}
 
-			result += data.fulfillment.speech;
+			result = data.fulfillment.speech;
 			result += ' ';
 			result += sum;
 

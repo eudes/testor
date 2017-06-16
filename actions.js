@@ -24,8 +24,8 @@ const Actions = {
 				sum += data.parameters.prev_number.reduce((acc, val) => acc + val);
 			}
 
-			result += fulfillment.speech;
-            result += ' ';
+			result += data.fulfillment.speech;
+			result += ' ';
 			result += sum;
 
 		} else {

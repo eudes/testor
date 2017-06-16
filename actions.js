@@ -35,6 +35,7 @@ const Actions = {
 			text = "Tú estás tonto o qué?"
 		}
 
+		console.log(response);
 		response.displayText = text;
 		response.speech = text;
 		response.contextOut.prev_number = sum;

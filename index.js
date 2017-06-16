@@ -14,32 +14,23 @@ restService.post('/hook', function (req, res) {
 
     try {
         var speech = 'empty speech';
+        var response = {
+            speech: "",
+            displayText: "",
+            contextOut: {},
+            source: 'testor-ws'
+        };
 
         if (req.body) {
             var requestBody = req.body;
-
             if (requestBody.result) {
-                speech = '';
-
-                if (requestBody.result.fulfillment) {
-                    speech += requestBody.result.fulfillment.speech;
-                    speech += ' ';
-                }
-
                 if (requestBody.result.action) {
-                    speech = actions.routeRequest(requestBody.result.action, requestBody.result);
-             
+                    actions.routeRequest(requestBody.result.action, requestBody, response);
                 }
             }
         }
 
-        console.log('result: ', speech);
-
-        return res.json({
-            speech: speech,
-            displayText: speech,
-            source: 'apiai-webhook-sample'
-        });
+        return res.json(response);
     } catch (err) {
         console.error("Can't process request", err);
 

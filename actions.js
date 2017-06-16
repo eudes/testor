@@ -1,11 +1,11 @@
 const Actions = {
 
-	routeRequest: function speechRequest(actionName, data){
+	routeRequest: function request(actionName, request, response){
 		var response = null;
 		
 		if(actionName && (typeof this[actionName] == "function") && actionName != "routeRequest"){
 			//response = this[actionName].apply(Actions, data);
-			response = this[actionName](data);
+			response = this[actionName](request, response);
 		} else {
 			throw "No action with name " + actionName;
 		}
@@ -13,32 +13,34 @@ const Actions = {
 		return response;
 	},
 
-	sum: function sum(data){
-		var result = 0;
+	sum: function sum(request, response){
+		var sum = 0;
+		var text = "";
 
-		if(data && data.parameters && data.parameters.number &&
-			data.parameters.number.length > 0){
+		if(request && result.parameters && request.result.parameters.number &&
+			request.result.parameters.number.length > 0){
 
-			var sum = data.parameters.number.reduce((acc, val) => acc + val);
-			if(data.parameters.prev_number){
-				console.log('prev_number', data.parameters.prev_number, JSON.stringify(data.parameters.prev_number));
-				sum += data.parameters.prev_number.reduce((acc, val) => acc + val);
+			sum = request.result.parameters.number.reduce((acc, val) => acc + val);
+
+			if(request.result.parameters.prev_number && request.result.parameters.prev_number.length > 0){
+				console.log('prev_number', request.result.parameters.prev_number, JSON.stringify(request.result.parameters.prev_number));
+				sum += request.result.parameters.prev_number.reduce((acc, val) => acc + val);
 			}
 
-			result = data.fulfillment.speech;
-			result += ' ';
-			result += sum;
+			text = request.result.fulfillment.speech;
+			text += ' ';
+			text += sum;
 
 		} else {
-			result = "Tú estás tonto o qué?"
+			text = "Tú estás tonto o qué?"
 		}
 
-		return result;
+		response.displayText = text;
+		response.speech = text;
+		response.contextOut.prev_number = sum;
+
+		return response;
 	},
-
-
-
-
 
 };
 

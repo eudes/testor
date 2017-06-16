@@ -7,19 +7,19 @@ const actions = require('../actions.js');
 
 describe('actions', function(){
 	describe('sum()', function(){
-		let tests = 
+		// let tests = 
 
-		tests.forEach(function (test) {
-			it('correctly adds ' + test.args.length + ' args', function() {
-				var res = actions.routeRequest('sum', {
-					parameters: {
-						number: test.args
-					}
-				});
-				assert.equal(res, test.expected);
-			});
+		// tests.forEach(function (test) {
+		// 	it('correctly adds ' + test.args.length + ' args', function() {
+		// 		var res = actions.routeRequest('sum', {
+		// 			parameters: {
+		// 				number: test.args
+		// 			}
+		// 		});
+		// 		assert.equal(res, test.expected);
+		// 	});
 
-		});
+		// });
 
 	});
 

@@ -18,11 +18,17 @@ const Actions = {
 
 		if(data && data.parameters && data.parameters.number &&
 			data.parameters.number.length > 0){
-			result = data.parameters.number.reduce((acc, val) => acc + val);
+			result += fulfillment.speech;
+            result += ' ';
+			result += data.parameters.number.reduce((acc, val) => acc + val);
+		} else {
+			result = "Tú estás tonto o qué?"
 		}
 
 		return result;
-	}
+	},
+
+
 
 
 

@@ -27,7 +27,7 @@ restService.post('/hook', function (req, res) {
                 }
 
                 if (requestBody.result.action) {
-                    speech += actions.routeRequest(requestBody.result.action, requestBody.result);
+                    speech = actions.routeRequest(requestBody.result.action, requestBody.result);
              
                 }
             }

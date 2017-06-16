@@ -1,3 +1,8 @@
+Archivos interesantes:
+- index.js hace la recepción básica del servicio web, no debería tener que variar mucho
+- actions.js implementa las acciones, aquí es donde va a ir la chicha
+- test/actions.js testea las acciones
+
 # Api.ai - sample webhook implementation.
 
 This is a really simple webhook implementation that gets Api.ai classification JSON (i.e. a JSON output of Api.ai /query endpoint) and returns a fulfillment response.

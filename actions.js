@@ -17,7 +17,7 @@ const Actions = {
 		var sum = 0;
 		var text = "";
 
-		if(request && result.parameters && request.result.parameters.number &&
+		if(request && request.result.parameters && request.result.parameters.number &&
 			request.result.parameters.number.length > 0){
 
 			sum = request.result.parameters.number.reduce((acc, val) => acc + val);

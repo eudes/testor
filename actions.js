@@ -1,7 +1,6 @@
 const Actions = {
 
 	routeRequest: function request(actionName, request, response){
-		var response = null;
 		
 		if(actionName && (typeof this[actionName] == "function") && actionName != "routeRequest"){
 			//response = this[actionName].apply(Actions, data);

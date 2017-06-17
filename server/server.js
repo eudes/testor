@@ -12,7 +12,7 @@ restService.use(bodyParser.json());
 
 // Request logging for testing
 if(process.env.LOG_REQUESTS){
-    let _logFolder = 'log';
+    let logFolder = 'log';
     restService.use(requestLogger.logToFile(_logFolder));
 }
 
@@ -26,7 +26,9 @@ restService.post('/hook', function (req, res) {
         var response = {
             speech: "",
             displayText: "",
-            // contextOut: {},
+            // data: {},
+            // messages: [],
+            // contextOut: [],
             source: 'testor-ws'
         };
 

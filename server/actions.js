@@ -1,9 +1,13 @@
 'use_strict';
 
 const ContextHelper = require('./helpers/contextHelper.js');
+const SlackMessagesHelper = require('./helpers/slackMessagesHelper.js');
 
 const Actions = {
 	
+	/**
+	 * Routes the request to the appropiate action method
+	 */
 	routeRequest: function routeRequest(actionName, req, res){
 		
 		if(actionName && (typeof this[actionName] == "function") && actionName != "routeRequest"){
@@ -17,6 +21,9 @@ const Actions = {
 		return res;
 	},
 	
+	/**
+	 * Sums a list of numbers
+	 */
 	sum: function sum(req, res){
 		var sum = 0;
 		var text = "";
@@ -53,19 +60,22 @@ const Actions = {
 		return res;
 	},
 	
+	/**
+	 * Finds a photo
+	 */
 	findPhoto: function findPhotos(req, res) {
 
 		if(req && req.result.parameters && req.result.parameters){
 			
 			var params = req.result.parameters;
 			if(params.query){
-				// res.messages = [ {
-				// 	type: 1,
-				// 	image: 'https://nociones.files.wordpress.com/2010/02/zp.jpg',
-				// 	text: 'https://nociones.files.wordpress.com/2010/02/zp.jpg'
-				// }];
-				
-				res.speech = 'https://nociones.files.wordpress.com/2010/02/zp.jpg';
+				var photo = 'https://nociones.files.wordpress.com/2010/02/zp.jpg';
+
+				res.data = {
+					slack: SlackMessagesHelper.image(params.query, photo)
+				};
+				res.speech = photo;
+
 			}
 		}
 

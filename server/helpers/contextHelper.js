@@ -1,6 +1,10 @@
 'use_strict';
 
 const ContextHelper = {
+	
+	/**
+	 * Creates a new context entry
+	 */
 	createContextEntry: function createContextEntry(contextName, parameters, lifespan){
 		return {
 			name: contextName,
@@ -9,7 +13,10 @@ const ContextHelper = {
 		};
 	},
 
-	getContext: function getContext(contextName, contexts){
+	/**
+	 * Returns the context with contextName from a context list
+	 */
+	extractContext: function getContext(contextName, contexts){
 		var result = null;
 		if(contexts && contexts.length > 0 && contextName){
 			result = contexts.find( (c) => c.name === contextName );

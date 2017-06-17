@@ -24,11 +24,16 @@ restService.post('/hook', function (req, res) {
     try {
         var speech = 'empty speech';
         var response = {
+            // response to the request
             speech: "",
+            // Text displayed on the user device screen.
             displayText: "",
+             // OUT API.AI context
+            contextOut: [],
+            // Event name and optional parameters sent from the web service to API.AI.
+            // followupEvent: {},
+            // Info passed to the client witout API.AI processing
             // data: {},
-            // messages: [],
-            // contextOut: [],
             source: 'testor-ws'
         };
 

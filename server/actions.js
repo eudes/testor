@@ -76,6 +76,8 @@ const Actions = {
 				};
 				res.speech = photo;
 
+			} else {
+				res.speech = 'No query';
 			}
 		}
 
